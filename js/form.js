@@ -7,9 +7,6 @@
         var form = document.querySelector("#form-adicionar")
         var paciente = obtemPacienteForm(form);
 
-        //criar tr e td do novo paciente
-        var pacienteTr = montaTr(paciente);
-
         //Exibir mensagens de erro ao cadastrar
         var erros = validaPaciente(paciente)
 
@@ -18,10 +15,8 @@
             return;
         }
 
-        //inserindo tr do paciente na tabela
-    
-        var tabela = document.querySelector("#tabela-pacientes");
-        tabela.appendChild(pacienteTr);
+        //Método para adicionar pacientes na tabela
+        adicionaPacienteNaTabela(paciente);
 
         //limpa o form e a ul com as mensagens de erro
         form.reset();
@@ -107,4 +102,11 @@ function exibeMensagensDeErro(erros) {
         li.textContent = erro;
         ul.appendChild(li);
     });
+}
+
+//Adiciona pacientes na tabela
+function adicionaPacienteNaTabela(paciente) {
+    var pacienteTr = montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
 }
